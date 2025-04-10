@@ -1,4 +1,4 @@
-package com.loja.loja_sulpe;
+package com.loja.loja_suple;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
