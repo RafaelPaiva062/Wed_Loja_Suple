@@ -1,7 +1,7 @@
 drop database  if exists  lojaSuple;
 create database lojaSuple;
-show tables;
 use lojaSuple;
+show tables;
 describe produtos;
 create table produtos(
 id_produtos int primary key auto_increment,

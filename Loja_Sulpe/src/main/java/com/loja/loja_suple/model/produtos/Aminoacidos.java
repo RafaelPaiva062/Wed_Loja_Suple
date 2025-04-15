@@ -8,12 +8,12 @@ import jakarta.persistence.*;
 public class Aminoacidos extends Produtos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_aminoacido;
+    private int id_aminoacido;
     public Aminoacidos(){
         super();
     }
 
-    public Aminoacidos(Long id_aminoacido, int id_produtos, String nome, double preco, int quantidade ) {
+    public Aminoacidos(int id_aminoacido, int id_produtos, String nome, double preco, int quantidade ) {
         super(id_produtos,nome,preco,quantidade);
         this.id_aminoacido = id_aminoacido;
     }
@@ -22,7 +22,7 @@ public class Aminoacidos extends Produtos {
         return id_aminoacido;
     }
 
-    public void setId_aminoacido(Long id_aminoacido) {
+    public void setId_aminoacido(int id_aminoacido) {
         this.id_aminoacido = id_aminoacido;
     }
 
