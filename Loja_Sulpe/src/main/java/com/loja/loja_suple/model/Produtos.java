@@ -12,18 +12,18 @@ public abstract class Produtos {
     private  String nome;
     private  double preco;
     private  int quantidade;
-    public Produtos(int id_produtos, String nome, double preco, int quantidade) {
+    private byte[] imagem;
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
 
 
-    public Produtos() {
-      this.id_produtos = id_produtos;
-      this.categoria = categoria;
-      this.nome = nome;
-      this.preco = preco;
-      this.quantidade = quantidade;
 
-    }
     public long getId_produtos() {
         return id_produtos;
     }
