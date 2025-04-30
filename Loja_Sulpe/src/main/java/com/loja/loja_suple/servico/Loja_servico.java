@@ -6,18 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
-public class Loje_servico {
+public class Loja_servico {
+
+    private List<Produtos> produtos;
+
+    public List<Produtos> getProdutos() {
+        return produtos;
+    }
+
+    public void setProdutos(List<Produtos> produtos) {
+        this.produtos = produtos;
+    }
     @Autowired
     private RepositorioLoja repositorioLoja;
-    public Loje_servico(RepositorioLoja repositorioLoja){
+    public Loja_servico(RepositorioLoja repositorioLoja){
         this.repositorioLoja =repositorioLoja;
     }
 
     public Produtos salvarProduto(Produtos produtos){
-        repositorioLoja.setRepositorioLoja(UUID.randomUUID().toString());
         return  repositorioLoja.save(produtos);
     }
     public List<Produtos> listarProdutos(){
