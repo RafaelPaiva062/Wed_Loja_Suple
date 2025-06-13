@@ -36,17 +36,15 @@ public class Loja_servico {
         return (List<Produtos>) repositorioLoja.findAll();
     }
 
-    //Buscar produtos
-    public Produtos  buscarPorId(Long id){
-       return repositorioLoja.findById(id).orElse(null);
+    // Buscar por nome
+    public List<Produtos> buscarPorNome(String nome) {
+        return repositorioLoja.findByNomeContainingIgnoreCase(nome);
     }
 
-    //Buscar produtos com nome
-
-    public Produtos buscarPorNome(String nome){
-        return  repositorioLoja.findByNomeContainingIgnoreCase(nome);
+    // Buscar por ID
+    public Produtos buscarPorId(Long id) {
+        return repositorioLoja.findById(id).orElse(null);
     }
-
     //Atualização de produtos
     public class ProdutoNotFoundException extends RuntimeException {
         public ProdutoNotFoundException(String message) {
@@ -66,6 +64,7 @@ public class Loja_servico {
         produto.setImagem(produtos.getImagem());
         return repositorioLoja.save(produto);
     }
+
     // NOVO: Atualizar vários produtos
     public List<Produtos> atualizarTodos(List<Produtos> produtos) {
         repositorioLoja.saveAll(produtos);

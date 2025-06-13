@@ -4,6 +4,7 @@ show tables;
 use lojaSuple;
 create table usuarios(
     id_usuario int primary key auto_increment,
+    perfil varchar(255),
     email  varchar(200) not null,
     telefome varchar(200) not null,
     nome varchar(200) not null,

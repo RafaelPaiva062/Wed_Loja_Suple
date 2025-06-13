@@ -12,14 +12,14 @@ public  class Produtos {
     private  String nome;
     private  double preco;
     private  int quantidade;
-    private byte[] imagem;
+    private byte[] imagens;
 
     public byte[] getImagem() {
-        return imagem;
+        return imagens;
     }
 
     public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
+        this.imagens = imagem;
     }
 
 

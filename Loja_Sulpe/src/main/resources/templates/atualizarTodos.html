@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Produtos em Lote</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .produto { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; border-radius: 10px; }
+        input { margin: 5px 0; padding: 8px; width: 100%; }
+        button { padding: 10px 20px; background-color: #28a745; color: #fff; border: none; cursor: pointer; border-radius: 5px; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+<h2>Atualizar Vários Produtos</h2>
+
+<div id="produtos">
+    <div class="produto">
+        <input type="number" placeholder="ID" class="id">
+        <input type="text" placeholder="Nome" class="nome">
+        <input type="number" placeholder="Preço" class="preco" step="0.01">
+        <input type="text" placeholder="Categoria" class="categoria">
+        <input type="number" placeholder="Quantidade" class="quantidade">
+    </div>
+
+    <div class="produto">
+        <input type="number" placeholder="ID" class="id">
+        <input type="text" placeholder="Nome" class="nome">
+        <input type="number" placeholder="Preço" class="preco" step="0.01">
+        <input type="text" placeholder="Categoria" class="categoria">
+        <input type="number" placeholder="Quantidade" class="quantidade">
+    </div>
+</div>
+
+<button onclick="atualizarProdutos()">Atualizar Produtos</button>
+
+<script>
+    function atualizarProdutos() {
+        const divs = document.querySelectorAll('.produto');
+        const produtos = [];
+
+        divs.forEach(div => {
+            const id = div.querySelector('.id').value;
+            const nome = div.querySelector('.nome').value;
+            const preco = div.querySelector('.preco').value;
+            const categoria = div.querySelector('.categoria').value;
+            const quantidade = div.querySelector('.quantidade').value;
+
+            if (id && nome && preco && categoria && quantidade) {
+                produtos.push({
+                    id: Number(id),
+                    nome: nome,
+                    preco: parseFloat(preco),
+                    categoria: categoria,
+                    quantidade: parseInt(quantidade),
+                    imagem: null // Se não for atualizar imagem, envie como null
+                });
+            }
+        });
+
+        fetch("http://localhost:8080/produtos/lote", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(produtos)
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Produtos atualizados com sucesso!");
+                    return res.json();
+                } else {
+                    throw new Error("Erro na atualização.");
+                }
+            })
+            .then(data => console.log(data))
+            .catch(err => {
+                alert("Erro ao atualizar: " + err.message);
+                console.error(err);
+            });
+    }
+</script>
+
+</body>
+</html>
